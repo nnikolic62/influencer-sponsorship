@@ -1,14 +1,13 @@
 package cpm.influencer_sponsorship.influencer_sponsorship.entity;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -32,5 +31,6 @@ public class Influencer {
     @Column(name = "engagment_rate")
     private double engagmentRate;
     @OneToMany(mappedBy = "influencer", cascade = {CascadeType.ALL})
-    private List<Offer> offers;
+    @JsonManagedReference(value = "influencer-offers")
+    private List<Offer> offers = new ArrayList<>();
 }

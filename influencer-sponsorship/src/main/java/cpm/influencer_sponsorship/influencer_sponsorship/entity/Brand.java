@@ -1,8 +1,6 @@
 package cpm.influencer_sponsorship.influencer_sponsorship.entity;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,6 +26,7 @@ public class Brand {
     @Column(name = "budget")
     private double budget;
     @OneToMany(mappedBy = "brand", cascade = {CascadeType.ALL})
+    @JsonManagedReference(value = "brand-offers")
     private List<Offer> offers;
 
 }

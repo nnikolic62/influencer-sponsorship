@@ -26,4 +26,25 @@ public class OfferServiceImpl implements OfferService {
         
         return savedOffer;
     }
+
+    @Override
+    public Offer findById(Long id) {
+        Offer offer = offerRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found!"));
+
+        return offer;
+    }
+
+    @Override
+    public List<Offer> filterByInfluencerId(Long id) {
+        List<Offer> foundOffers = offerRepository.findByInfluencerId(id);
+
+        return foundOffers;
+    }
+
+    @Override
+    public List<Offer> filterByBrandId(Long id) {
+        List<Offer> foundOffers = offerRepository.findByBrandId(id);
+
+        return foundOffers;
+    }
 }

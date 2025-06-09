@@ -9,4 +9,6 @@ public interface InfluencerService {
     List<Influencer> getAllInfluencers();
 
     Influencer insert(Influencer influencer);
+
+    void delete(Long id);
 }

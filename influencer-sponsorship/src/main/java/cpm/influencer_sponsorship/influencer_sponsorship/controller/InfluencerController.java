@@ -33,4 +33,11 @@ public class InfluencerController {
 
         return new ResponseEntity<>(savedInfluencer, HttpStatus.CREATED);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> delete(@PathVariable Long id){
+        influencerService.delete(id);
+
+        return ResponseEntity.ok("Deleted successfully!");
+    }
 }

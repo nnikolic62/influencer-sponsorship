@@ -27,4 +27,11 @@ public class InfluencerServiceImpl implements InfluencerService {
 
         return savedInfluencer;
     }
+
+    @Override
+    public void delete(Long id) {
+        Influencer influencer = influencerRepository.findById(id).orElseThrow(() -> new RuntimeException("Error!"));
+
+        influencerRepository.delete(influencer);
+    }
 }
