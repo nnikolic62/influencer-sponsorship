@@ -4,6 +4,8 @@ import cpm.influencer_sponsorship.influencer_sponsorship.entity.Influencer;
 import cpm.influencer_sponsorship.influencer_sponsorship.repository.InfluencerRepository;
 import cpm.influencer_sponsorship.influencer_sponsorship.service.InfluencerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,5 +35,10 @@ public class InfluencerServiceImpl implements InfluencerService {
         Influencer influencer = influencerRepository.findById(id).orElseThrow(() -> new RuntimeException("Error!"));
 
         influencerRepository.delete(influencer);
+    }
+
+    @Override
+    public Page<Influencer> getInfluencersPagination(Pageable pageable) {
+        return influencerRepository.findAll(pageable);
     }
 }
